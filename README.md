@@ -59,5 +59,3 @@ Se necesita:
 8. Cada punto debe tener mínimo un test que demuestren su correcto funcionamiento.
 9. Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando.
 
-Cada punto debe tener mínimo un test.<br>
-Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando.
