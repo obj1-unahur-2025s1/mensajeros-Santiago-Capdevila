@@ -1,4 +1,4 @@
-import celular_vehiculos.*
+import vehiculos.*
 object roberto {
   var transporte = bici
 

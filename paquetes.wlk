@@ -15,36 +15,45 @@ object paquete {
     estaPago = true
   }
 
-  method sePuedeEntregar() {
+  method cambiarDestino(unDestino) {
+    destino = unDestino
+  }
+
+  method sePuedeEntregar(unMensajero) {
     return destino.puedePasar(unMensajero) && estaPago
   }
 }
 
 object paquetito {
+  var destino = matrix
+
   method estaPago() {
     return true
+  }
+
+  method cambiarDestino(unDestino) {
+    destino = unDestino
   }
 
   method precio() {
     return 0
   }
 
-  method sePuedeEntregar() {
-    return self.estaPago()
+  method sePuedeEntregar(unMensajero) {
+    return true
   }
 }
 
 object paquetonViajero {
   const destinos = []
-  const precio = 100 * destinos.size()
   var pagos = 0
 
-  method pagar(unMonto) {
-    pagos = pagos + unMonto
+  method precio() {
+    return 100 * destinos.size()
   }
 
-  method precio() {
-    return precio
+  method pagar(unMonto) {
+    pagos = self.precio() + unMonto
   }
 
   method agregarDestinos(unDestino) {
@@ -52,10 +61,14 @@ object paquetonViajero {
   }
 
   method estaPago() {
-    return pagos == precio
+    return pagos >= self.precio()
   }
 
-  method sePuedeEntregar() {
-    return self.estaPago()
+  method pueePasarPorDestinos(unMensajero) {
+    return destinos.all({destino => destino.puedePasar(unMensajero)})
+  }
+
+  method sePuedeEntregar(unMensajero) {
+    return destinos.all({destino => destino.puedePasar(unMensajero)}) && self.estaPago()
   }
 }

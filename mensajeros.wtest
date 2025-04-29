@@ -1,6 +1,6 @@
 import destinos.*
 import mensajeros.*
-import celular_vehiculos.*
+import vehiculos.*
 import paquetes.*
 import empresa.*
 
@@ -13,22 +13,25 @@ describe "primera parte" {
   }
 
   test "Neo no puede llevar un paquete que no está pago a la matrix" {
-    neo.dispositivo().cargarCredito(5)
-    assert.notThat(matrix.puedePasar(neo) && paquete.estaPago())
+    assert.notThat(paquete.sePuedeEntregar(neo))
   }
 }
 
 describe "segunda parte" {
   
   test "La empresa contrata a Neo" {
-    empresa.contratarMensajero(neo)
-    assert.that(empresa.mensajeros.size())
+    assert.that(empresa.mensajeros().contains(neo))
   }
 
   test "La empresa despide a roberto" {
     empresa.contratarMensajero(roberto)
     empresa.despedirMensajero(roberto)
     assert.notThat(empresa.mensajeros().contains(roberto))
+  }
+
+  test "La mensajería no es grande" {
+    empresa.contratarMensajero(neo)
+    assert.notThat(empresa.esGrande())
   }
 
   test "La empresa despide a todos los mensajeros" {
@@ -44,16 +47,21 @@ describe "segunda parte" {
     empresa.contratarMensajero(chuckNorris)
     empresa.contratarMensajero(neo)
     paquete.pagarPaquete()
-    assert.that(empresa.puedeSerEntregadoPorElPrimero(paquete, puenteDeBrooklyn))
+    assert.that(empresa.puedeSerEntregadoPorElPrimero())
   }
 
   test "El último mensajero contratado por la empresa tiene un peso mayor a 500kg" {
     empresa.contratarMensajero(chuckNorris)
     empresa.contratarMensajero(neo)
     empresa.contratarMensajero(roberto)
-    roberto.cambiarVehiculo(camion)
+    roberto.cambiarTransporte(camion)
     camion.agregarAcoplado(3)
     assert.that(empresa.pesoUltimoMensajero() > 500)
   }
 }
 
+describe "tercer parte" {
+  test "description" {
+    
+  }
+}
