@@ -1,13 +1,13 @@
 import celular_vehiculos.*
 object roberto {
-  var vehiculo = bici
+  var transporte = bici
 
   method peso() {
-    return 90 + vehiculo.peso()
+    return 90 + transporte.peso()
   }
 
-  method cambiarVehiculo(unVehiculo) {
-    vehiculo = unVehiculo
+  method cambiarTransporte(unTransporte) {
+    transporte = unTransporte
   }
 
   method puedeLlamar() {
@@ -26,17 +26,21 @@ object chuckNorris {
 }
 
 object neo {
-  const dispositivo = celular 
+  var tieneCredito = true
 
   method peso() {
     return 0
   }
 
-  method dispositivo() {
-    return dispositivo
+  method cargarCredito() {
+    tieneCredito = true
+  }
+
+  method agotarCredito() {
+    tieneCredito = false
   }
 
   method puedeLlamar() {
-    return dispositivo.tieneCredito()
+    return tieneCredito
   }
 }

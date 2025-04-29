@@ -1,16 +1,3 @@
-// Celular
-object celular {
-  var credito = 0
-
-  method cargarCredito(unNumero) {
-    credito += unNumero
-  }
-
-  method tieneCredito() {
-    return credito > 0
-  }
-}
-
 // Vehiculos
 object bici {
   method peso() {

@@ -1,5 +1,7 @@
+import destinos.*
 object paquete {
   var estaPago = false
+  var destino = matrix
 
   method estaPago() {
     return estaPago
@@ -14,7 +16,7 @@ object paquete {
   }
 
   method sePuedeEntregar() {
-    return self.estaPago()
+    return destino.puedePasar(unMensajero) && estaPago
   }
 }
 

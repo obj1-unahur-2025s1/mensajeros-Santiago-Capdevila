@@ -6,7 +6,7 @@ import empresa.*
 
 describe "primera parte" {
   test "Roberto lleva un paquete a el puente de Brooklyn que está pago en un camión que tiene un acoplado" {
-    roberto.cambiarVehiculo(camion)
+    roberto.cambiarTransporte(camion)
     camion.agregarAcoplado(1)
     paquete.pagarPaquete()
     assert.that(puenteDeBrooklyn.puedePasar(roberto) && paquete.estaPago())
